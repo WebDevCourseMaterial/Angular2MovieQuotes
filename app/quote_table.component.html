@@ -6,8 +6,10 @@
   </tr>
   </thead>
   <tbody>
-  <tr *ngFor="#mq of moviequotes; #i = index">
-    <td>{{i + 1}}. {{mq.movie}}</td>
+  <!--<tr *ngFor="#mq of moviequotes; #i = index">-->
+
+  <tr *ngFor="#mq of firebaseUrl | firebaseevent:'child_added'">
+    <td>{{mq.movie}}</td>
     <td>{{mq.quote}}</td>
   </tr>
   </tbody>

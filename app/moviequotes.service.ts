@@ -1,5 +1,4 @@
 import {Injectable} from "angular2/core";
-import {MOVIEQUOTES} from "./mock_moviequotes";
 import {Moviequote} from "./moviequote.model";
 
 @Injectable()
