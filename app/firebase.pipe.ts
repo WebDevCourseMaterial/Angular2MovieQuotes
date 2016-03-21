@@ -20,7 +20,7 @@ export class FirebaseEventPipe {
       this._fbRef = new Firebase(value);
       let event = this._getEventFromArgs(args);
       if (ALLOWED_FIREBASE_EVENTS[event] === ALLOWED_FIREBASE_EVENTS.child_added) {
-        this._fbRef.on(event, snapshot => {
+        this._fbRef.limitToLast(100).orderByKey().on(event, snapshot => {
           // Wait to create array until value exists
           if (!this._latestValue) this._latestValue = [];
           this._latestValue.push(snapshot.val());

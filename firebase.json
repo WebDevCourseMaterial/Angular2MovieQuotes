@@ -1,0 +1,7 @@
+{
+  "firebase": "fisherds-movie-quotes",
+  "public": ".",
+  "ignore": [
+    "firebase.json"
+  ]
+}
