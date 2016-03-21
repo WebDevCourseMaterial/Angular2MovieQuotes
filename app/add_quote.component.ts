@@ -11,7 +11,7 @@ export class AddQuoteComponent {
 
   public moviequote: Moviequote;
 
-  @Output("AddQuoteEvent") eventEmitter: EventEmitter;
+  @Output("AddQuoteEvent") eventEmitter: EventEmitter<any>;
 
   constructor() {
     this.moviequote = new Moviequote();
