@@ -6,8 +6,8 @@
   </tr>
   </thead>
   <tbody>
-  <tr *ngFor="#mq of tableQuotes">
-    <td>{{mq.movie}}</td>
+  <tr *ngFor="#mq of moviequotes; #i = index">
+    <td>{{i + 1}}. {{mq.movie}}</td>
     <td>{{mq.quote}}</td>
   </tr>
   </tbody>

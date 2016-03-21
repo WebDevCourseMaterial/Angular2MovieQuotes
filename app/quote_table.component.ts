@@ -1,15 +1,19 @@
 import {Component} from "angular2/core";
 import {NgFor} from "angular2/common";
 import {Moviequote} from "./moviequote.model";
-import {Input} from "angular2/core";
+import {MovieQuotesService} from "./moviequotes.service";
 
 @Component({
   selector: 'quote-table',
   templateUrl: 'app/quote_table.component.html',
-  directives: [NgFor]
 })
 export class QuoteTableComponent {
+  private moviequotes: Array<Moviequote>
+  constructor(private _movieQuotesService: MovieQuotesService) { }
 
-  @Input() private tableQuotes: Moviequote[];
-
+  ngOnInit() {
+    this._movieQuotesService.getMovieQuotes().then((moviequotes) => {
+      this.moviequotes = moviequotes;
+    } );
+  }
 }

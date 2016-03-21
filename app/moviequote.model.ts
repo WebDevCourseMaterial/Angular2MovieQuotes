@@ -1,4 +1,3 @@
 export class Moviequote {
-  movie: string;
-  quote: string;
+  constructor(public movie: string, public quote: string) { }
 }
