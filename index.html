@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<html>
+<head>
+  <title>Movie Quotes</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link href="themes/bootstrap.min.css" rel="stylesheet">
+
+  <!-- 1. Load libraries -->
+  <!-- IE required polyfills (from CDN), in this exact order -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/es6-shim/0.33.3/es6-shim.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/systemjs/0.19.16/system-polyfills.js"></script>
+
+
+  <script src="node_modules/angular2/bundles/angular2-polyfills.js"></script>
+  <script src="node_modules/systemjs/dist/system.src.js"></script>
+  <script src="node_modules/rxjs/bundles/Rx.js"></script>
+  <script src="node_modules/angular2/bundles/angular2.dev.js"></script>
+
+  <!-- 2. Configure SystemJS -->
+  <script>
+    System.config({
+      packages: {
+        app: {
+          format: 'register',
+          defaultExtension: 'js'
+        }
+      }
+    });
+    System.import('app/main')
+        .then(null, console.error.bind(console));
+  </script>
+
+</head>
+
+<!-- 3. Display the application -->
+<body>
+<div class="container">
+  <my-app>Loading...</my-app>
+</div>
+</body>
+
+</html>
