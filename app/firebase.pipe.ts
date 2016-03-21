@@ -1,3 +1,5 @@
+// FROM: https://github.com/sararob/angular2base/blob/master/src/firebasepipe.ts
+
 import {Pipe, ChangeDetectorRef, Inject, WrappedValue} from "angular2/core";
 export enum ALLOWED_FIREBASE_EVENTS {value, child_added};
 
