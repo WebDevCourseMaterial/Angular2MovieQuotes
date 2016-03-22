@@ -2,13 +2,13 @@ import {Component} from "angular2/core";
 import {TitleComponent} from "./title.component";
 import {AddQuoteComponent} from "./add_quote.component";
 import {QuoteTableComponent} from "./quote_table.component";
-import {MovieQuotesService} from "./moviequotes.service";
+import {MQObservableService} from "./firebase.service";
 
 @Component({
   selector: 'my-app',
   templateUrl: 'app/app.component.html',
   directives: [TitleComponent, AddQuoteComponent, QuoteTableComponent],
-  providers: [MovieQuotesService],
+  providers: [MQObservableService],
 })
 export class AppComponent {
 
