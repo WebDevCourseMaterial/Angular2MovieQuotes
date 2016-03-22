@@ -1,17 +1,18 @@
-import {Injectable, OnInit} from "angular2/core";
+import {Injectable} from "angular2/core";
+import {Moviequote} from "./moviequote.model";
+// See https://github.com/ReactiveX/rxjs
 import {Observable} from "rxjs/Observable";
 import 'rxjs/add/operator/share';
-import {Moviequote} from "./moviequote.model";
 
 @Injectable()
-export class MQObservableService implements OnInit {
+export class MQObservableService {
 
     private ref: Firebase;
     private quotes: Moviequote[];
     private source: Observable<Moviequote[]>;
 
     public subscribe(func) {
-      // https://github.com/Reactive-Extensions/RxJS/blob/master/doc/api/core/observer.md
+      // http://reactivex.io/rxjs/class/es6/Observable.js~Observable.html#instance-method-subscribe
       this.source.subscribe(func);     
     }
 
@@ -20,9 +21,9 @@ export class MQObservableService implements OnInit {
       // https://facebook.github.io/immutable-js/ see article:
       // http://www.jvandemo.com/how-i-optimized-minesweeper-using-angular-2-and-immutable-js-to-make-it-insanely-fast/
       // Would be fun to speed up, but I don't have time for it :)
-      this.ref = new Firebase("https://rockwotj-moviequotes.firebaseio.com/quotes");
+      this.ref = new Firebase("https://fisherds-movie-quotes.firebaseio.com/quotes");
       this.quotes = [];
-      // https://github.com/Reactive-Extensions/RxJS/blob/master/doc/api/core/operators/create.md
+      // https://github.com/ReactiveX/rxjs/blob/master/doc/observable.md
       let observable = Observable.create((observer) => {
         let listener1 = this.ref.on("child_added", snapshot => {
           let value = snapshot.val();
@@ -58,7 +59,7 @@ export class MQObservableService implements OnInit {
           this.ref.off("child_removed", listener3);
         };
       });
-      // See: https://github.com/Reactive-Extensions/RxJS/blob/master/doc/api/core/operators/share.md
+      // See: http://reactivex.io/rxjs/class/es6/Observable.js~Observable.html#instance-method-share
       this.source = observable.share();
     }
 }

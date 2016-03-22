@@ -13,7 +13,7 @@ import {MQObservableService} from "./firebase.service";
 export class AppComponent {
 
   onAddQuoteEvent(mq) {
-    var quotesRef = new Firebase("https://rockwotj-moviequotes.firebaseio.com/quotes");
+    var quotesRef = new Firebase("https://fisherds-movie-quotes.firebaseio.com/quotes");
     quotesRef.push(mq);
   }
 }
