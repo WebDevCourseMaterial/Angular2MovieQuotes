@@ -5,7 +5,7 @@ import {Moviequote} from "./moviequote.model";
 @Component({
   selector: 'add-quote',
   templateUrl: 'app/add_quote.component.html',
-  directives: []
+  styleUrls: ["app/add_quote.component.css"],
 })
 export class AddQuoteComponent {
 

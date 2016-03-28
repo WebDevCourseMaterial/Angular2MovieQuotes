@@ -1,6 +1,6 @@
+<p><span *ngIf="moviequote.movie && moviequote.quote">The best quote from '{{moviequote.movie}}' is: '{{moviequote.quote}}'</span></p>
 Movie: <input [(ngModel)]="moviequote.movie"><br>
 Quote: <input [(ngModel)]="moviequote.quote" (keyup.enter)="addQuote()">
-<p *ngIf="moviequote.movie && moviequote.quote">The best quote from '{{moviequote.movie}}' is: '{{moviequote.quote}}'</p>
-<div style="margin-top: 13px;">
+<div>
   <button class="btn btn-primary" (click)="addQuote()">Add Quote</button>
 </div>
