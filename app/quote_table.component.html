@@ -6,7 +6,7 @@
   </tr>
   </thead>
   <tbody>
-  <tr *ngFor="#mq of (movieQuotesArrayStream | async)">
+  <tr *ngFor="#mq of (movieQuotesArrayStream | async) | arraySort">
     <td>{{mq.val().movie}}</td>
     <td>{{mq.val().quote}}</td>
   </tr>
