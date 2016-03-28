@@ -8,7 +8,6 @@ import {FirebaseService} from "./firebase.service";
   selector: 'my-app',
   templateUrl: 'app/app.component.html',
   directives: [TitleComponent, AddQuoteComponent, QuoteTableComponent],
-  providers: [FirebaseService],
 })
 export class AppComponent {
 

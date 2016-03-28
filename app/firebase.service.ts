@@ -26,7 +26,7 @@ export class FirebaseService {
       // http://www.jvandemo.com/how-i-optimized-minesweeper-using-angular-2-and-immutable-js-to-make-it-insanely-fast/
       // Would be fun to speed up, but I don't have time for it :)
       let ref = new Firebase(url);
-      let _array = [];
+      let _array: Array<FirebaseDataSnapshot> = [];
       // https://github.com/ReactiveX/rxjs/blob/master/doc/observable.md
       let observable = Observable.create((observer) => {
         let listener1 = ref.on("child_added", snapshot => {
@@ -61,6 +61,7 @@ export class FirebaseService {
       // See: http://reactivex.io/rxjs/class/es6/Observable.js~Observable.html#instance-method-share
       return observable.share();
     }
+
 
   observeObject(url: string): Observable<FirebaseDataSnapshot> {
     let ref = new Firebase(url);
