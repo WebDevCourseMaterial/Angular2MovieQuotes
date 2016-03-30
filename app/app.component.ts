@@ -2,7 +2,6 @@ import {Component} from "angular2/core";
 import {TitleComponent} from "./title.component";
 import {AddQuoteComponent} from "./add_quote.component";
 import {QuoteTableComponent} from "./quote_table.component";
-import {FirebaseService} from "./firebase.service";
 
 @Component({
   selector: 'my-app',
@@ -11,8 +10,10 @@ import {FirebaseService} from "./firebase.service";
 })
 export class AppComponent {
 
+  private firebaseUrl: string = "https://fisherds-movie-quotes.firebaseio.com/quotes";
+
   onAddQuoteEvent(mq) {
-    var quotesRef = new Firebase("https://fisherds-movie-quotes.firebaseio.com/quotes");
+    var quotesRef = new Firebase(this.firebaseUrl);
     quotesRef.push(mq);
   }
 }

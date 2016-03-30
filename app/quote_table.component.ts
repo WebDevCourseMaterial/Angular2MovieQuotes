@@ -1,21 +1,24 @@
 import {Component} from "angular2/core";
-import {FirebaseService} from "./firebase.service";
 import {Observable} from "rxjs/Observable";
-import {ArraySortPipe} from "./arraysort.pipe";
+import {MovieQuotesService} from "./moviequotes.service";
+import {Moviequote} from "./moviequote.model";
 
 @Component({
   selector: 'quote-table',
   templateUrl: 'app/quote_table.component.html',
-  providers: [FirebaseService],
-  pipes: [ArraySortPipe]
+  inputs: ['firebaseUrl'],
+  providers: [MovieQuotesService]
 })
 export class QuoteTableComponent {
-  private movieQuotesArrayStream: Observable<FirebaseDataSnapshot[]>;
-  private firebaseUrl: string = "https://fisherds-movie-quotes.firebaseio.com/quotes";
-  constructor(private _movieQuotesService: FirebaseService) {
+  
+  private movieQuotesArrayStream: Observable<Moviequote[]>;
+  private firebaseUrl: string;
+  
+  constructor(private _movieQuotesService: MovieQuotesService) {
   }
 
   ngOnInit() {
-    this.movieQuotesArrayStream = this._movieQuotesService.observeArray(this.firebaseUrl);
+    this.movieQuotesArrayStream = this._movieQuotesService.createMoviequotesStream(
+        this.firebaseUrl);
   }
 }
