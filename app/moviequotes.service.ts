@@ -6,13 +6,15 @@ import {Moviequote} from "./moviequote.model";
 @Injectable()
 export class MovieQuotesService {
 
-  public moviequotesStream : Observable<Moviequote[]>;
+  private _moviequotesStream : Observable<Moviequote[]>;
 
   /*
    *  Takes in a FirebaseURL and returns a stream that emits a movie quotes array.
-   *
    */
   createMoviequotesStream(url: string): Observable<Moviequote[]> {
+    if (this._moviequotesStream) {
+      return this._moviequotesStream;
+    }
     let ref = new Firebase(url);
     let _array: Array<Moviequote> = [];
     let observable = Observable.create((observer) => {
@@ -45,7 +47,7 @@ export class MovieQuotesService {
         ref.off("child_removed", listener3);
       };
     });
-    this.moviequotesStream = observable.share();
-    return this.moviequotesStream;
+    this._moviequotesStream = observable.share();
+    return this._moviequotesStream;
   }
 }
